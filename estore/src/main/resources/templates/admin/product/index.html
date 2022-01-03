@@ -4,31 +4,31 @@
 
 	<div th:fragment="view">
 	    <div class="alert alert-secondary">
-	    	PRODUCT MANAGEMENT
+	    	<b><i class='bx bx-gift'></i> PRODUCT MANAGEMENT</b>
 	    	<i class="float-end text-danger" th:text="${message}"></i>
 	    </div>
-	    <div>
-	    	<ul class="nav">
-				<li th:each="c: ${categories}" class="nav-item">
-				  <a th:href="@{|/admin/product/category/${c.id}|}" th:text="${c.nameVn}" class="nav-link">Link</a>
-				</li>
-			</ul>
-	    </div>
+
+	    <hr th:replace="/admin/product/_categories">
+
 		<!-- Nav tabs -->
 	    <ul class="nav nav-tabs">
 	        <li class="nav-item">
-	            <a th:classappend="${edit?'active':''}" class="nav-link" data-bs-toggle="tab" href="#edit">Edit</a>
+	            <a th:class="@{|nav-link ${edit?'active':''}|}" data-bs-toggle="tab" href="#edit">
+	            	<i class='bx bxs-edit'></i> EDIT PRODUCT
+	            </a>
 	        </li>
 	        <li class="nav-item">
-	            <a th:classappend="${edit?'':'active'}" class="nav-link " data-bs-toggle="tab" href="#list">List</a>
+	            <a th:class="@{|nav-link ${edit?'':'active'}|}" data-bs-toggle="tab" href="#list">
+	            	<i class='bx bx-list-ol'></i> LIST OF PRODUCTS
+	            </a>
 	        </li>
 	    </ul>
 	    <!-- Tab panes -->
 	    <div class="tab-content">
-	        <div th:classappend="${edit?'active':'fade'}" class="tab-pane container" id="edit">
+	        <div th:class="@{|tab-pane ${edit?'active':'fade'}|}" id="edit">
 	            <div th:replace="/admin/product/_form"></div>
 	        </div>
-	        <div th:classappend="${edit?'fade':'active'}" class="tab-pane container" id="list">
+	        <div th:class="@{|tab-pane ${edit?'fade':'active'}|}" id="list">
 	            <div th:replace="/admin/product/_table"></div>
 	        </div>
 	    </div>

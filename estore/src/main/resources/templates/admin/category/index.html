@@ -4,25 +4,29 @@
 
 	<div th:fragment="view">
 	    <div class="alert alert-secondary">
-	    	CATEGORY MANAGEMENT
+	    	<b><i class='bx bx-category'></i> CATEGORY MANAGEMENT</b>
 	    	<i class="float-end text-danger" th:text="${message}"></i>
 	    </div>
 	    
 		<!-- Nav tabs -->
 	    <ul class="nav nav-tabs">
 	        <li class="nav-item">
-	            <a class="nav-link active" data-bs-toggle="tab" href="#edit">Edit</a>
+	            <a class="nav-link active" data-bs-toggle="tab" href="#edit">
+	            	<i class='bx bxs-edit'></i> EDIT CATEGORY
+	            </a>
 	        </li>
 	        <li class="nav-item">
-	            <a class="nav-link" data-bs-toggle="tab" href="#list">List</a>
+	            <a class="nav-link" data-bs-toggle="tab" href="#list">
+	            	<i class='bx bx-list-ol'></i> LIST OF CATEGORIES
+	            </a>
 	        </li>
 	    </ul>
 	    <!-- Tab panes -->
 	    <div class="tab-content">
-	        <div class="tab-pane container active" id="edit">
+	        <div class="tab-pane active" id="edit">
 	            <div th:replace="/admin/category/_form"></div>
 	        </div>
-	        <div class="tab-pane container fade" id="list">
+	        <div class="tab-pane fade" id="list">
 	            <div th:replace="/admin/category/_table"></div>
 	        </div>
 	    </div>

@@ -1,8 +1,8 @@
 package estore.repository.service;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import estore.repository.Order;
@@ -34,7 +34,7 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	@Override
-	public List<Order> findAll() {
-		return dao.findAll();
+	public Page<Order> findPageByStatusId(Integer statusId, Pageable pageable) {
+		return dao.findPageByStatusId(statusId, pageable);
 	}
 }

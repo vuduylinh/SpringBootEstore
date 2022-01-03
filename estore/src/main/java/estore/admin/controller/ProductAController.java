@@ -58,7 +58,6 @@ public class ProductAController {
 	@RequestMapping("/admin/product/index")
 	public String index(Model model) {
 		model.addAttribute("item", new Product());
-		
 		return this.forward(model);
 	}
 	

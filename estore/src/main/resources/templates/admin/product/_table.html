@@ -1,6 +1,6 @@
-<div xmlns:th="http://www.thymeleaf.org">
+<div class="card" xmlns:th="http://www.thymeleaf.org">
 	<table class="table">
-	    <thead>
+	    <thead style="font-variant: small-caps;">
 	        <tr>
 	            <th>No.</th>
 	            <th>Id</th>
@@ -15,7 +15,7 @@
 	    </thead>
 	    <tbody>
 	        <tr th:each="itm, st : ${page.content}">
-	            <td th:text="${st.count}"></td>
+	            <td th:text="${st.count + page.number * page.size}"></td>
 	            <td th:text="${itm.id}"></td>
 	            <td th:text="${itm.name}"></td>
 	            <td th:text="${itm.unitPrice}"></td>
@@ -29,21 +29,7 @@
 	        </tr>
 	    </tbody>
 	</table>
-	<ul class="pagination">
-		<li class="page-item">
-			<a class="page-link" th:href="@{|/admin/product/paginate/0|}">First</a>
-		</li>
-		<li class="page-item" th:classappend="${page.number == 0 ? 'disabled':''}">
-			<a class="page-link" th:href="@{|/admin/product/paginate/${page.number - 1}|}">Previous</a>
-		</li>
-		<li class="page-item">
-			<a class="page-link" href="#">Page [[${page.number + 1}]] of [[${page.totalPages}]] Pages</a>
-		</li>
-		<li class="page-item" th:classappend="${page.number == page.totalPages - 1 ? 'disabled':''}">
-			<a class="page-link" th:href="@{|/admin/product/paginate/${page.number + 1}|}">Next</a>
-		</li>
-		<li class="page-item">
-			<a class="page-link" th:href="@{|/admin/product/paginate/${page.totalPages - 1}|}">Last</a>
-		</li>
-	</ul>
+	<div class="card-footer">
+		<hr th:replace="/admin/product/_pager">
+	</div>
 </div>

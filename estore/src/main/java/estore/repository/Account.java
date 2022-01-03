@@ -25,7 +25,7 @@ public class Account {
 	String mobile;
 	String email;
 	String address;
-	String photo = "photo.png";
+	String photo = "new.png";
 	boolean activated;
 	
 	@OneToMany(mappedBy = "account")
@@ -33,4 +33,12 @@ public class Account {
 	
 	@OneToMany(mappedBy = "account", fetch = FetchType.EAGER)
 	List<Authority> authorities;
+	
+	public boolean hasRole(Role role) {
+		if(this.authorities != null) {
+			return this.authorities.stream()
+					.anyMatch(a -> a.getRole().getId().equals(role.getId()));
+		}
+		return false;
+	}
 }
